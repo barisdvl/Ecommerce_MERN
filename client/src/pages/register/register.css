@@ -1,0 +1,77 @@
+.register-container{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(190,115,116, 0.8),
+        rgba(229, 175, 175, 0.8),
+        rgba(190,115,116, 0.8)
+      );
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.register-logo{
+    display: flex;
+    font-size: 42px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 7% 0px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .register-wrapper{
+    width: 25%;
+    height: 30%;
+    padding: 5%;
+    background-color: white;
+    border-radius: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .register-title{
+    font-size: 24px;
+    font-weight: 700;
+    color: #BE7374;
+  }
+  
+  .register-form{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-formInput{
+    flex: 1;
+    min-width: 40%;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  
+  .register-formButton{
+    width: 40%;
+    border: none;
+    padding: 15px 20px;
+    background-color: #BE7374;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .register-formButton:disabled{
+    color: green;
+    cursor: not-allowed;
+  }
+  
+  .register-formLink{
+    margin: 5px 0px;
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+    color: inherit;
+  }

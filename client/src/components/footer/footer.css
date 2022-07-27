@@ -1,0 +1,49 @@
+.footer{
+ background-color: #BE7374;
+}
+
+.footer-container{
+    display: flex;
+}
+
+.footer-containerLeft{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.containerLeft-description{
+    margin: 20px 0px;
+}
+
+.containerLeft-appDownload{
+    display: flex;
+    align-items: center;
+    
+}
+
+.appDownload-image{  
+    display: flex; 
+    width: 30%;
+    cursor: pointer;
+}
+
+.footer-containerRight{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.containerRight-link{
+    text-decoration: none;
+    color: inherit;
+    padding: 5px;
+}
+
+.containerRight-socialIcon{
+    margin: 15px 10px;
+    cursor: pointer;
+}
