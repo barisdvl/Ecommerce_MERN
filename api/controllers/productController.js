@@ -8,20 +8,12 @@ exports.createProduct = async (req, res) => {
       return res.status(403).json("Product already exist");
     }
 
-    const newProduct = new Product({
-      title: req.body.title,
-      description: req.body.description,
-      productImg: req.body.productImg,
-      categories: req.body.categories,
-      size: req.body.size,
-      color: req.body.color,
-      price: req.body.price,
-      inStock: req.body.inStock,
-    });
-
+    const newProduct = new Product(req.body);
     const savedProduct = await newProduct.save();
     res.status(200).json(savedProduct);
   } catch (err) {
+    console.log("Controller Check");
+    console.log(err);
     res.status(500).json(err);
   }
 };

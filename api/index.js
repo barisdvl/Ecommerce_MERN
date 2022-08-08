@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 const database = require("./config/database");
 const authRoute = require("./routes/authRoute");
@@ -13,8 +14,11 @@ dotenv.config();
 database.connect();
 const PORT = process.env.API_PORT || 5000;
 
+//Middleware
 app.use(express.json());
+app.use(cors());
 
+//Routes
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);

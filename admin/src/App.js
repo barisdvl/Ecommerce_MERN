@@ -1,0 +1,45 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./app.css";
+import Sidebar from "./components/sidebar/Sidebar";
+import Topbar from "./components/topbar/Topbar";
+import Home from "./pages/home/Home";
+import UserList from "./pages/userList/UserList";
+import User from "./pages/user/User";
+import CreateUser from "./pages/createUser/CreateUser";
+import ProductList from "./pages/productList/ProductList";
+import Product from "./pages/product/Product";
+import CreateProduct from "./pages/createProduct/CreateProduct";
+import EditProduct from "./pages/editProduct/EditProduct";
+import Login from "./pages/login/Login";
+import { useSelector } from "react-redux";
+
+function App() {
+  const admin = useSelector(
+    (state) => state.user.currentUser && state.user.currentUser.isAdmin
+  );
+  if (!admin) {
+    return <Login />;
+  }
+  return (
+    <Router>
+      <div className="container">
+        <Topbar />
+        <div className="bottomContainer">
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/user/:userId" element={<User />} />
+            <Route path="/createUser" element={<CreateUser />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/product/edit/:productId" element={<EditProduct />} />
+            <Route path="/createProduct" element={<CreateProduct />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
