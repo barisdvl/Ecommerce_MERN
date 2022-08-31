@@ -7,7 +7,7 @@ export default function Categories() {
     <div className="categories">
       <div className="categories-container">
         {categories.map((item) => (
-          <div className="categories-items">
+          <div className="categories-items" key={item.id}>
             <Link to={`/products/${item.category}`}>
               <img src={item.img} alt="category-img" className="categories-image" />
               <div className="categories-detail">

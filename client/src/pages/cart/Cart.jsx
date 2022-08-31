@@ -2,8 +2,18 @@ import "./cart.css";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { Add, Remove } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct } from "../../redux/reducers/cartSlice";
 
 export default function Cart() {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleDeleteProduct = (_id, quantity, price) => {
+    dispatch(deleteProduct({ _id, quantity, price }));
+  };
+  console.log(cart);
+
   return (
     <div className="cart">
       <Navbar />
@@ -35,35 +45,55 @@ export default function Cart() {
             </div>
             <div className="cart-bottom">
               <div className="cart-detail">
-                <div className="cart-product">
-                  <div className="cart-productDetail">
-                    <img
-                      src="https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png"
-                      alt=""
-                      className="cart-productImage"
-                    />
-                    <div className="cart-productSubDetails">
-                      <span className="cart-productName">
-                        Product: Red T-Shirt
-                      </span>
-                      <span className="cart-productId">ID: 21</span>
-                      <div
-                        className="cart-productColor"
-                        style={{ backgroundColor: "red" }}
-                      ></div>
-                      <span className="cart-productSize">Size: M</span>
-                    </div>
-                    <div className="cart-productPriceDetail">
-                      <div className="cart-productAmountContainer">
-                        <Add className="cart-productAmountButton"/>
-                        <div className="cart-productAmount">1</div>
-                        <Remove className="cart-productAmountButton"/>
+                {cart.products.map((product) => (
+                  <div key={product._id}>
+                    <div className="cart-product">
+                      <div className="cart-productDetail">
+                        <img
+                          src={product.productImg}
+                          alt=""
+                          className="cart-productImage"
+                        />
+                        <div className="cart-productSubDetails">
+                          <span className="cart-productName">
+                            Product: {product.title}
+                          </span>
+
+                          <div className="cart-productColor">
+                            {product.color}
+                          </div>
+                          <span className="cart-productSize">
+                            Size: {product.size}
+                          </span>
+                        </div>
+                        <div className="cart-productPriceDetail">
+                          <div className="cart-productAmountContainer">
+                            <Add className="cart-productAmountButton" />
+                            <div className="cart-productAmount">
+                              {product.quantity}
+                            </div>
+                            <Remove className="cart-productAmountButton" />
+                          </div>
+                          <div className="cart-productPrice">
+                            {" "}
+                            {product.price}
+                          </div>
+                        </div>
+                        <div
+                          className="cart-productDelete"
+                          onClick={handleDeleteProduct({
+                            _id: product._id,
+                            quantity: product.quantity,
+                            price: product.price,
+                          })}
+                        >
+                          Delete
+                        </div>
                       </div>
-                      <div className="cart-productPrice"> 99.99 TL</div>
                     </div>
+                    <hr className="cart-hr" />
                   </div>
-                </div>
-                <hr className="cart-hr" />
+                ))}
               </div>
               <div className="cart-summary">
                 <h1 className="cart-summaryTitle">ORDER SUMMARY</h1>

@@ -52,6 +52,13 @@
     align-items: center;
 }
 
+.navbar-right-container{
+    display: flex;
+    align-items: center;
+    color: gray;
+    text-decoration: underline;
+}
+
 .navbar-right-icons{
     color: gray;
     height: 30px;
